@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Priyanka B | Full Stack Developer</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- GSAP + Typed.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.0/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Poppins',sans-serif;background:#0f0f0f;color:white;scroll-behavior:smooth;}
+
+  /* Header */
+  header{position:fixed;top:0;width:100%;background: rgba(0,0,0,0.85);
+    display:flex;justify-content: space-between;align-items:center;
+    padding:15px 40px;z-index:1000;box-shadow:0 4px 6px rgba(0,0,0,0.2);}
+  header div{font-weight:700;font-size:1.3rem;color:#00e676;cursor:pointer;}
+  header nav a{color:white;margin-left:20px;text-decoration:none;font-weight:600;transition:0.3s;}
+  header nav a.active,header nav a:hover{color:#00e676;}
+
+  section{min-height:100vh;padding:120px 20px 60px;display:flex;
+    flex-direction: column;justify-content: center;align-items: center;text-align: center;}
+  h1,h2{margin-bottom:30px;}
+
+  /* Hero */
+  .hero{position:relative;width:100%;
+    background: linear-gradient(135deg,#1a1a1a,#222,#0f0f0f);
+    background-size:400% 400%;animation:gradientMove 12s ease infinite;}
+  @keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+  .hero h1{font-size:3rem;margin-bottom:15px;}
+  .hero .typed-text{color:#00e676;font-weight:600;font-size:1.5rem;}
+
+  /* About */
+  #about p{max-width:700px;margin:0 auto;font-size:1.2rem;line-height:1.6;}
+
+  /* Skills */
+  .skills-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;max-width:1000px;width:100%;}
+  .skill-card {
+    background: linear-gradient(145deg, #0e0e0e, #1a1a1a);
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0,230,118,0.2);
+    transition: 0.4s;
+  }
+  .skill-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 25px rgba(0,230,118,0.4);
+    border: 2px solid #00e676;
+  }
+  .circle {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 6px solid #222;
+    border-top: 6px solid #00e676;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #00e676;
+    position: relative;
+  }
+  .circle span {
+    position: absolute;
+  }
+  .skill-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 10px;
+    color: #fff;
+  }
+  .skill-title i {
+    color: #00e676;
+    margin-right: 6px;
+  }
+
+  /* Projects */
+  .projects{display:flex;flex-wrap:wrap;justify-content:center;gap:25px;max-width:1100px;}
+  .project-card{background:#111;border-radius:15px;padding:20px;width:280px;
+    box-shadow:0 10px 20px rgba(0,230,118,0.3);transform: scale(0.9);transition:0.4s;}
+  .project-card:hover{transform: scale(1.05);box-shadow:0 15px 25px rgba(0,230,118,0.5);}
+  .project-card h3{margin-bottom:10px;color:#00e676;}
+  .project-card a{text-decoration:none;color:#00e676;font-weight:600;}
+
+  /* Contact */
+  .contact-box{
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,230,118,0.15);
+    width:100%;max-width:500px;
+    border:1px solid rgba(255,255,255,0.1);
+  }
+  .contact-box h2{margin-bottom:20px;color:#00e676;}
+  .contact-group{
+    display:flex;align-items:center;
+    background:rgba(255,255,255,0.08);
+    padding:12px 15px;
+    border-radius:10px;
+    margin-bottom:15px;
+    border:1px solid rgba(255,255,255,0.1);
+  }
+  .contact-group i{margin-right:10px;color:#00e676;}
+  .contact-group input,.contact-group textarea{
+    border:none;background:transparent;outline:none;color:white;font-size:16px;width:100%;
+  }
+  .contact-group textarea{resize:none;height:120px;}
+  .contact-box button{
+    width:100%;padding:12px;border:none;border-radius:8px;
+    background:#00e676;color:#111;font-weight:600;font-size:16px;cursor:pointer;transition:0.3s;
+  }
+  .contact-box button:hover{background:#00b359;}
+
+  footer{text-align:center;padding:25px;background:#111;color:#00e676;}
+
+  @media(max-width:768px){
+    .hero h1{font-size:2.2rem;}
+    .hero .typed-text{font-size:1.2rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>Priyanka B</div>
+  <nav>
+    <a href="#hero" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- Hero Section -->
+<section id="hero" class="hero">
+  <h1>Hi, I'm Priyanka B</h1>
+  <div class="typed-text"></div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+  <h2>About Me</h2>
+  <p>I am Priyanka B, a sincere Full Stack Developer skilled in MERN Stack. I enjoy building interactive and dynamic websites. I am passionate about learning and implementing new technologies in real projects.</p>
+</section>
+
+<!-- Skills Section -->
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills-container">
+    <div class="skill-card" data-percent="90">
+      <div class="circle"><span>90%</span></div>
+      <div class="skill-title"><i class="fas fa-database"></i> MongoDB</div>
+    </div>
+    <div class="skill-card" data-percent="85">
+      <div class="circle"><span>85%</span></div>
+      <div class="skill-title"><i class="fas fa-server"></i> Express.js</div>
+    </div>
+    <div class="skill-card" data-percent="88">
+      <div class="circle"><span>88%</span></div>
+      <div class="skill-title"><i class="fab fa-react"></i> React.js</div>
+    </div>
+    <div class="skill-card" data-percent="82">
+      <div class="circle"><span>82%</span></div>
+      <div class="skill-title"><i class="fab fa-node-js"></i> Node.js</div>
+    </div>
+    <div class="skill-card" data-percent="95">
+      <div class="circle"><span>95%</span></div>
+      <div class="skill-title"><i class="fab fa-js"></i> JavaScript</div>
+    </div>
+    <div class="skill-card" data-percent="98">
+      <div class="circle"><span>98%</span></div>
+      <div class="skill-title"><i class="fas fa-code"></i> HTML & CSS</div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects">
+    <div class="project-card">
+      <h3>Tech Stream</h3>
+      <p>An educational website providing interactive learning content for students.</p>
+      <a href="#">View Project</a>
+    </div>
+    <div class="project-card">
+      <h3>Speed Breaker Detected (IoT)</h3>
+      <p>An IoT-based system to detect speed breakers on roads and alert vehicles for safety.</p>
+      <a href="#">View Project</a>
+    </div>
+    <div class="project-card">
+      <h3>Employee Salary Prediction</h3>
+      <p>A machine learning project to predict employee salaries based on experience, skills, and job profile.</p>
+      <a href="#">View Project</a>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+  <div class="contact-box">
+    <h2>Contact Me</h2>
+    <div class="contact-group"><i class="fas fa-user"></i><input type="text" placeholder="Your Name" required></div>
+    <div class="contact-group"><i class="fas fa-envelope"></i><input type="email" placeholder="Your Email" required></div>
+    <div class="contact-group"><i class="fas fa-comment"></i><textarea placeholder="Your Message" required></textarea></div>
+    <button>Send Message</button>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Priyanka B | Full Stack Developer
+</footer>
+
+<script>
+  // Typing effect
+  const typed = new Typed('.typed-text', {
+    strings: ['Full Stack Developer', 'MERN Stack', 'Tech Enthusiast'],
+    typeSpeed: 80,
+    backSpeed: 50,
+    loop: true
+  });
+
+  // Navigation active class
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('header nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 90;
+      if(pageYOffset >= sectionTop) current = section.getAttribute('id');
+    });
+    navLinks.forEach(link => link.classList.remove('active'));
+    document.querySelector('header nav a[href="#'+current+'"]')?.classList.add('active');
+  });
+
+  // GSAP animations
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Skills animation
+  gsap.from(".skill-card", {
+    opacity: 0,
+    y: 40,
+    duration: 1,
+    stagger: 0.2,
+    scrollTrigger: { trigger: ".skills-container", start: "top 80%" }
+  });
+
+  // Projects animation
+  gsap.from(".project-card",{opacity:0,y:50,duration:1,stagger:0.3,
+    scrollTrigger:{trigger:".projects",start:"top 80%"}});
+
+  // Contact animation
+  gsap.from(".contact-box",{opacity:0,y:50,duration:1,
+    scrollTrigger:{trigger:"#contact",start:"top 80%"}});
+
+</script>
+
+</body>
+</html>
